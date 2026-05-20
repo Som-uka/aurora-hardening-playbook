@@ -19,28 +19,28 @@ The remediation follows a **pilot-on-dev-first** approach: validate all steps on
 | **Public Aurora access** | RDS/Aurora instances with `Publicly Accessible: Yes` |
 | **Open security group** | Ingress on database/cache ports open to `0.0.0.0/0` |
 | **Scope** | Production cluster (multi-AZ, writer + reader instances) |
-| **Business impact** | Direct database exposure to the internet — highest severity finding |
+| **Business impact** | Direct database exposure to the internet: highest severity finding |
 
 ---
 
 ## Remediation Phases
 
-### Phase 1 — Dev Cluster Pilot
+### Phase 1: Dev Cluster Pilot
 - Identify all application layers connecting to the dev cluster
 - Remove `0.0.0.0/0` ingress rules from attached security groups
 - Replace with specific CIDR ranges or security group references
 - Validate all application connections still function
 
-### Phase 2 — Staging Validation
+### Phase 2: Staging Validation
 - Repeat Phase 1 on staging cluster
 - Load test and validate under simulated traffic
 
-### Phase 3 — Production Hardening
+### Phase 3: Production Hardening
 - Apply validated security group changes to production cluster
 - Monitor CloudWatch for connection errors post-change
 - Keep rollback commands ready for immediate execution
 
-### Phase 4 — Private Subnet Migration (Future)
+### Phase 4: Private Subnet Migration (Future)
 - Move Aurora clusters to private subnets with no public route
 - Access via Client VPN or bastion host only
 
