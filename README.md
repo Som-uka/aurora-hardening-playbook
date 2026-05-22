@@ -96,3 +96,9 @@ aurora-hardening-playbook/
 - AWS CLI, Bash / PowerShell
 
 > All resource identifiers, security group IDs, ARNs, and internal naming have been sanitized.
+
+
+## Architecture Diagram
+
+![Aurora Database Hardening Architecture](docs/diagrams/02_aurora-hardening-architecture.png)
+
